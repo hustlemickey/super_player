@@ -281,17 +281,28 @@ public class SuperPlayerImpl implements SuperPlayer, ITXVodPlayListener, ITXLive
      * @param context
      */
     private void initLivePlayer(Context context) {
-        mLivePlayer = new TXLivePlayer(context);
+//        mLivePlayer = new TXLivePlayer(context);
+//        SuperPlayerGlobalConfig config = SuperPlayerGlobalConfig.getInstance();
+//        mLivePlayConfig = new TXLivePlayConfig();
+//        mLivePlayConfig.setHeaders(config.headers);
+//        mLivePlayer.setConfig(mLivePlayConfig);
+//        mLivePlayer.setRenderMode(config.renderMode);
+//        mLivePlayer.setRenderRotation(TXLiveConstants.RENDER_ROTATION_PORTRAIT);
+//        mLivePlayer.setPlayListener(this);
+//        mLivePlayer.enableHardwareDecode(config.enableHWAcceleration);
+//        mLivePlayer.setMute(config.mute);
+//        TXCLog.setConsoleEnabled(config.enableLog);
+        if (mLivePlayer != null)
+            return;
+        mLivePlayer = new TXLivePlayerImpl(context);
         SuperPlayerGlobalConfig config = SuperPlayerGlobalConfig.getInstance();
         mLivePlayConfig = new TXLivePlayConfig();
-        mLivePlayConfig.setHeaders(config.headers);
         mLivePlayer.setConfig(mLivePlayConfig);
         mLivePlayer.setRenderMode(config.renderMode);
         mLivePlayer.setRenderRotation(TXLiveConstants.RENDER_ROTATION_PORTRAIT);
         mLivePlayer.setPlayListener(this);
         mLivePlayer.enableHardwareDecode(config.enableHWAcceleration);
-        mLivePlayer.setMute(config.mute);
-        TXCLog.setConsoleEnabled(config.enableLog);
+
     }
 
     /**
